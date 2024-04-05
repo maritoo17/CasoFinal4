@@ -1,16 +1,17 @@
 package EditorTexto;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class CreacionYAlmacenamiento {
     private JFrame frame;
     private JTextArea textArea;
+    private JList<String> fileList;
 
     public CreacionYAlmacenamiento() {
         frame = new JFrame("Editor de Texto");
@@ -25,7 +26,16 @@ public class CreacionYAlmacenamiento {
         saveButton.addActionListener(new SaveAction());
         frame.add(saveButton, BorderLayout.SOUTH);
 
+        fileList = new JList<>(getFileNames("path/to/your/directory"));
+        fileList.addListSelectionListener(new FileSelectionAction());
+        frame.add(new JScrollPane(fileList), BorderLayout.WEST);
+
         frame.setVisible(true);
+    }
+
+    private String[] getFileNames(String directoryPath) {
+        File directory = new File(directoryPath);
+        return directory.list();
     }
 
     private class SaveAction implements ActionListener {
@@ -35,6 +45,20 @@ public class CreacionYAlmacenamiento {
                 writer.write(textArea.getText());
             } catch (IOException ioException) {
                 ioException.printStackTrace();
+            }
+        }
+    }
+
+    private class FileSelectionAction implements ListSelectionListener {
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            if (!e.getValueIsAdjusting()) {
+                String selectedFile = fileList.getSelectedValue();
+                try (BufferedReader reader = new BufferedReader(new FileReader("path/to/your/directory/" + selectedFile))) {
+                    textArea.read(reader, null);
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
             }
         }
     }
