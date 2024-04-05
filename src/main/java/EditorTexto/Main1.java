@@ -8,9 +8,9 @@ public class Main1 {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             } catch (Exception e) {
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al establecer el LookAndFeel", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            new CreacionYAlmacenamiento();
+            new CreacionYAlmacenamiento("path/to/your/directory");
         });
     }
 }
