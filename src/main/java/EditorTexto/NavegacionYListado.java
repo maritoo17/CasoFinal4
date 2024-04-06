@@ -29,14 +29,23 @@ public class NavegacionYListado extends JFrame {
         saveButton.addActionListener(e -> saveTextToFile());
         openButton.addActionListener(e -> showDocumentList());
 
-        createMenuBar();
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir"))); // Set the default directory to user's current working directory
         pack();
     }
 
-    private void createMenuBar() {
-    }
-
     private void saveTextToFile() {
+        if (fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            // Ensure the file has a ".txt" extension
+            if (!file.getName().toLowerCase().endsWith(".txt")) {
+                file = new File(file.getAbsolutePath() + ".txt");
+            }
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+                textArea.write(writer);
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "Failed to save the file.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
     private void showDocumentList() {
@@ -52,11 +61,10 @@ public class NavegacionYListado extends JFrame {
         JButton loadButton = new JButton("Load");
         dialog.add(loadButton, BorderLayout.SOUTH);
 
-        Path dirPath = Paths.get(".");
-        try (Stream<Path> paths = Files.walk(dirPath)) {
+        try (Stream<Path> paths = Files.walk(Paths.get(System.getProperty("user.dir")))) {
             paths.filter(Files::isRegularFile)
                     .filter(path -> path.toString().endsWith(".txt"))
-                    .forEach(path -> model.addElement(path.toString()));
+                    .forEach(path -> model.addElement(path.toAbsolutePath().toString()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,8 +73,8 @@ public class NavegacionYListado extends JFrame {
             if (!list.isSelectionEmpty()) {
                 String selectedFile = list.getSelectedValue();
                 loadFileIntoEditor(new File(selectedFile));
+                dialog.dispose();
             }
-            dialog.dispose();
         });
 
         dialog.setVisible(true);
@@ -76,8 +84,7 @@ public class NavegacionYListado extends JFrame {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             textArea.read(reader, null);
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Failed to load the file.",
-                    "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Failed to load the file.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
