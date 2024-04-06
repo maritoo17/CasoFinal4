@@ -8,14 +8,27 @@ import java.io.*;
 public class CreacionYAlmacenamiento extends JFrame {
     private JTextArea textArea = new JTextArea(20, 60);
     private JFileChooser fileChooser = new JFileChooser();
+    private JButton saveButton = new JButton("Save");
 
     public CreacionYAlmacenamiento() {
-        // Configura la ventana principal
         super("Simple Text Editor");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container contentPane = getContentPane();
+
         JScrollPane scrollPane = new JScrollPane(textArea);
         contentPane.add(scrollPane, BorderLayout.CENTER);
+
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        bottomPanel.add(saveButton);
+        contentPane.add(bottomPanel, BorderLayout.SOUTH);
+
+        saveButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                saveTextToFile();
+            }
+        });
+
         createMenuBar();
         pack();
     }
@@ -50,7 +63,6 @@ public class CreacionYAlmacenamiento extends JFrame {
             }
         }
     }
-
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
