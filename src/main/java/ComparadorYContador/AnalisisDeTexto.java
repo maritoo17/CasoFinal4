@@ -54,7 +54,7 @@ public class AnalisisDeTexto extends JFrame {
             JOptionPane.showMessageDialog(this, "Text is empty. Please load a file first.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String[] words = text.split("\\s+"); // Divide el texto en palabras basándose en espacios.
+        String[] words = text.split("\\s+");
         int totalWords = words.length;
 
         Map<String, Integer> wordFrequency = new HashMap<>();
