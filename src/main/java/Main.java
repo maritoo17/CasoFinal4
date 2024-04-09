@@ -12,7 +12,12 @@ import ComparadorYContador.AnalisisDeTexto;
 import javax.swing.*;
 
 public class Main {
+
     public static void main(String[] args) {
+        mostrarMenu();
+    }
+
+    public static void mostrarMenu() {
         String[] options = {
                 "CreacionYAlmacenamiento",
                 "NavegacionYListado",
@@ -30,47 +35,109 @@ public class Main {
                 "Menú", JOptionPane.QUESTION_MESSAGE, null,
                 options, options[0]);
 
-        switch (input) {
-            case "CreacionYAlmacenamiento":
-                CreacionYAlmacenamiento creacionYAlmacenamiento = new CreacionYAlmacenamiento();
-                creacionYAlmacenamiento.setVisible(true);
-                break;
-            case "NavegacionYListado":
-                NavegacionYListado navegacionYListado = new NavegacionYListado();
-                navegacionYListado.setVisible(true);
-                break;
-            case "BuscadorDePalabras":
-                BuscadorDePalabras buscadorDePalabras = new BuscadorDePalabras();
-                buscadorDePalabras.setVisible(true);
-                break;
-            case "AgendaDeContactos":
-                AgendaDeContactos agendaDeContactos = new AgendaDeContactos();
-                agendaDeContactos.setVisible(true);
-                break;
-            case "MultiplicidadDeVentanas":
-                MultiplicidadDeVentanas multiplicidadDeVentanas = new MultiplicidadDeVentanas();
-                multiplicidadDeVentanas.setVisible(true);
-                break;
-            case "SeguimientoDelRaton":
-                SeguimientoDelRaton seguimientoDelRaton = new SeguimientoDelRaton();
-                seguimientoDelRaton.setVisible(true);
-                break;
-            case "BarraDeDesplazamiento":
-                BarraDeDesplazamiento barraDeDesplazamiento = new BarraDeDesplazamiento();
-                barraDeDesplazamiento.setVisible(true);
-                break;
-            case "ValidadorDeEmail":
-                ValidadorDeEmail validadorDeEmail = new ValidadorDeEmail();
-                validadorDeEmail.setVisible(true);
-                break;
-            case "HerramientaDeDibujo":
-                HerramientaDeDibujo herramientaDeDibujo = new HerramientaDeDibujo();
-                herramientaDeDibujo.setVisible(true);
-                break;
-            case "AnalisisDeTexto":
-                AnalisisDeTexto analisisDeTexto = new AnalisisDeTexto();
-                analisisDeTexto.setVisible(true);
-                break;
+        if (input != null) {
+            switch (input) {
+                case "CreacionYAlmacenamiento":
+                    CreacionYAlmacenamiento creacionYAlmacenamiento = new CreacionYAlmacenamiento();
+                    creacionYAlmacenamiento.setVisible(true);
+                    creacionYAlmacenamiento.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                            mostrarMenu();
+                        }
+                    });
+                    break;
+                case "NavegacionYListado":
+                    NavegacionYListado navegacionYListado = new NavegacionYListado();
+                    navegacionYListado.setVisible(true);
+                    navegacionYListado.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                            mostrarMenu();
+                        }
+                    });
+                    break;
+                case "BuscadorDePalabras":
+                    BuscadorDePalabras buscadorDePalabras = new BuscadorDePalabras();
+                    buscadorDePalabras.setVisible(true);
+                    buscadorDePalabras.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                            mostrarMenu();
+                        }
+                    });
+                    break;
+                case "AgendaDeContactos":
+                    AgendaDeContactos agendaDeContactos = new AgendaDeContactos();
+                    agendaDeContactos.setVisible(true);
+                    agendaDeContactos.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                            mostrarMenu();
+                        }
+                    });
+                    break;
+                case "MultiplicidadDeVentanas":
+                    MultiplicidadDeVentanas multiplicidadDeVentanas = new MultiplicidadDeVentanas();
+                    multiplicidadDeVentanas.setVisible(true);
+                    multiplicidadDeVentanas.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                            mostrarMenu();
+                        }
+                    });
+                    break;
+                case "SeguimientoDelRaton":
+                    SeguimientoDelRaton seguimientoDelRaton = new SeguimientoDelRaton();
+                    seguimientoDelRaton.setVisible(true);
+                    seguimientoDelRaton.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                            mostrarMenu();
+                        }
+                    });
+                    break;
+                case "BarraDeDesplazamiento":
+                    BarraDeDesplazamiento barraDeDesplazamiento = new BarraDeDesplazamiento();
+                    barraDeDesplazamiento.setVisible(true);
+                    barraDeDesplazamiento.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                            mostrarMenu();
+                        }
+                    });
+                    break;
+                case "ValidadorDeEmail":
+                    ValidadorDeEmail validadorDeEmail = new ValidadorDeEmail();
+                    validadorDeEmail.setVisible(true);
+                    validadorDeEmail.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                            mostrarMenu();
+                        }
+                    });
+                    break;
+                case "HerramientaDeDibujo":
+                    HerramientaDeDibujo herramientaDeDibujo = new HerramientaDeDibujo();
+                    herramientaDeDibujo.setVisible(true);
+                    herramientaDeDibujo.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                            mostrarMenu();
+                        }
+                    });
+                    break;
+                case "AnalisisDeTexto":
+                    AnalisisDeTexto analisisDeTexto = new AnalisisDeTexto();
+                    analisisDeTexto.setVisible(true);
+                    analisisDeTexto.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                            mostrarMenu();
+                        }
+                    });
+                    break;
+            }
         }
     }
 }
