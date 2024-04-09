@@ -11,133 +11,79 @@ import ComparadorYContador.AnalisisDeTexto;
 
 import javax.swing.*;
 
-public class Main {
+    public class Main {
 
-    public static void main(String[] args) {
-        mostrarMenu();
-    }
+        public static void main(String[] args) {
+            SwingUtilities.invokeLater(Main::mostrarMenu);
+        }
 
-    public static void mostrarMenu() {
-        String[] options = {
-                "CreacionYAlmacenamiento",
-                "NavegacionYListado",
-                "BuscadorDePalabras",
-                "AgendaDeContactos",
-                "MultiplicidadDeVentanas",
-                "SeguimientoDelRaton",
-                "BarraDeDesplazamiento",
-                "ValidadorDeEmail",
-                "HerramientaDeDibujo",
-                "AnalisisDeTexto"
-        };
+        public static void mostrarMenu() {
+            String[] options = {
+                    "CreacionYAlmacenamiento",
+                    "NavegacionYListado",
+                    "BuscadorDePalabras",
+                    "AgendaDeContactos",
+                    "MultiplicidadDeVentanas",
+                    "SeguimientoDelRaton",
+                    "BarraDeDesplazamiento",
+                    "ValidadorDeEmail",
+                    "HerramientaDeDibujo",
+                    "AnalisisDeTexto"
+            };
 
-        String input = (String) JOptionPane.showInputDialog(null, "Elige una opción",
-                "Menú", JOptionPane.QUESTION_MESSAGE, null,
-                options, options[0]);
+            String input = (String) JOptionPane.showInputDialog(null, "Elige una opción",
+                    "Menú", JOptionPane.QUESTION_MESSAGE, null,
+                    options, options[0]);
 
-        if (input != null) {
-            switch (input) {
+            if (input != null) {
+                abrirVentanaSeleccionada(input);
+            }
+        }
+
+        private static void abrirVentanaSeleccionada(String seleccion) {
+            JFrame ventana = null;
+            switch (seleccion) {
                 case "CreacionYAlmacenamiento":
-                    CreacionYAlmacenamiento creacionYAlmacenamiento = new CreacionYAlmacenamiento();
-                    creacionYAlmacenamiento.setVisible(true);
-                    creacionYAlmacenamiento.addWindowListener(new java.awt.event.WindowAdapter() {
-                        @Override
-                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                            mostrarMenu();
-                        }
-                    });
+                    ventana = new CreacionYAlmacenamiento();
                     break;
                 case "NavegacionYListado":
-                    NavegacionYListado navegacionYListado = new NavegacionYListado();
-                    navegacionYListado.setVisible(true);
-                    navegacionYListado.addWindowListener(new java.awt.event.WindowAdapter() {
-                        @Override
-                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                            mostrarMenu();
-                        }
-                    });
+                    ventana = new NavegacionYListado();
                     break;
                 case "BuscadorDePalabras":
-                    BuscadorDePalabras buscadorDePalabras = new BuscadorDePalabras();
-                    buscadorDePalabras.setVisible(true);
-                    buscadorDePalabras.addWindowListener(new java.awt.event.WindowAdapter() {
-                        @Override
-                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                            mostrarMenu();
-                        }
-                    });
+                    ventana = new BuscadorDePalabras();
                     break;
                 case "AgendaDeContactos":
-                    AgendaDeContactos agendaDeContactos = new AgendaDeContactos();
-                    agendaDeContactos.setVisible(true);
-                    agendaDeContactos.addWindowListener(new java.awt.event.WindowAdapter() {
-                        @Override
-                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                            mostrarMenu();
-                        }
-                    });
+                    ventana = new AgendaDeContactos();
                     break;
                 case "MultiplicidadDeVentanas":
-                    MultiplicidadDeVentanas multiplicidadDeVentanas = new MultiplicidadDeVentanas();
-                    multiplicidadDeVentanas.setVisible(true);
-                    multiplicidadDeVentanas.addWindowListener(new java.awt.event.WindowAdapter() {
-                        @Override
-                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                            mostrarMenu();
-                        }
-                    });
+                    ventana = new MultiplicidadDeVentanas();
                     break;
                 case "SeguimientoDelRaton":
-                    SeguimientoDelRaton seguimientoDelRaton = new SeguimientoDelRaton();
-                    seguimientoDelRaton.setVisible(true);
-                    seguimientoDelRaton.addWindowListener(new java.awt.event.WindowAdapter() {
-                        @Override
-                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                            mostrarMenu();
-                        }
-                    });
+                    ventana = new SeguimientoDelRaton();
                     break;
                 case "BarraDeDesplazamiento":
-                    BarraDeDesplazamiento barraDeDesplazamiento = new BarraDeDesplazamiento();
-                    barraDeDesplazamiento.setVisible(true);
-                    barraDeDesplazamiento.addWindowListener(new java.awt.event.WindowAdapter() {
-                        @Override
-                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                            mostrarMenu();
-                        }
-                    });
+                    ventana = new BarraDeDesplazamiento();
                     break;
                 case "ValidadorDeEmail":
-                    ValidadorDeEmail validadorDeEmail = new ValidadorDeEmail();
-                    validadorDeEmail.setVisible(true);
-                    validadorDeEmail.addWindowListener(new java.awt.event.WindowAdapter() {
-                        @Override
-                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                            mostrarMenu();
-                        }
-                    });
+                    ventana = new ValidadorDeEmail();
                     break;
                 case "HerramientaDeDibujo":
-                    HerramientaDeDibujo herramientaDeDibujo = new HerramientaDeDibujo();
-                    herramientaDeDibujo.setVisible(true);
-                    herramientaDeDibujo.addWindowListener(new java.awt.event.WindowAdapter() {
-                        @Override
-                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                            mostrarMenu();
-                        }
-                    });
+                    ventana = new HerramientaDeDibujo();
                     break;
                 case "AnalisisDeTexto":
-                    AnalisisDeTexto analisisDeTexto = new AnalisisDeTexto();
-                    analisisDeTexto.setVisible(true);
-                    analisisDeTexto.addWindowListener(new java.awt.event.WindowAdapter() {
-                        @Override
-                        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                            mostrarMenu();
-                        }
-                    });
+                    ventana = new AnalisisDeTexto();
                     break;
+            }
+
+            if (ventana != null) {
+                ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                ventana.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                        SwingUtilities.invokeLater(Main::mostrarMenu);
+                    }
+                });
+                ventana.setVisible(true);
             }
         }
     }
-}

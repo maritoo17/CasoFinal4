@@ -20,7 +20,7 @@ public class BuscadorDePalabras extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setupUI();
         pack();
-        setLocationRelativeTo(null); // Centra la ventana en la pantalla
+        setLocationRelativeTo(null);
     }
 
     private void setupUI() {
